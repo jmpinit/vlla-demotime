@@ -11,6 +11,23 @@
   (let [full-paths (map #(str "/css/" %) files)]
     (apply include-css full-paths)))
 
+(defn help-page []
+  (html5
+    [:head
+     [:title "help"]
+     (my-include-css "editor.css" "bootstrap.min.css" "bootstrap-theme.min.css")
+     (my-include-js "jquery-2.1.1.min.js")]
+    [:body
+     [:div.container
+      [:h1 "help"]
+      [:hr]
+      [:h2 "api"]
+      [:ul
+       [:li [:b "paint(x, y): "] "change the color of the pixel at (x, y) to the current palette color."]
+       [:li [:b "palette(r, g, b): "] "change the current color."]
+       [:li [:b "refresh(): "] "put changes onto the display."]
+       [:li [:b "t(): "] "get the current frame count. Useful for making animations."]]]]))
+
 (defn editor-page []
   (html5
     [:head

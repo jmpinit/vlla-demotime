@@ -37,6 +37,7 @@
     
 (defroutes app-routes
   (GET "/" [] (editor-page))
+  (GET "/help" [] (help-page))
   (POST "/demo" req
         (let [params (:params req)
               name (:name params)
