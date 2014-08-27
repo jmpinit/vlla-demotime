@@ -1,0 +1,15 @@
+# vim
+*.swp
+*.swo
+
+# leiningen
+/target
+/lib
+/classes
+/checkouts
+pom.xml
+pom.xml.asc
+*.jar
+*.class
+/.lein-*
+/.nrepl-port
