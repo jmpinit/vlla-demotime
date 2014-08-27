@@ -55,6 +55,16 @@ function init() {
             run = false;
         }
     });
+
+    $('#submit').on('click', function() {
+        if(run) {
+            $.post('/demo', { name: $('#name').val(), code: code }, function(data) {
+                alert("Submitted demo! Server says: " + data);
+            });
+        } else {
+            alert("Please preview or fix your code first. Idk which lol derp.");
+        }
+    });
 }
 
 code = "";

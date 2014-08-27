@@ -20,6 +20,8 @@
     [:body {:onload "init()"}
      [:canvas {:id "viewport" :width 600 :height 320}] [:br]
      [:button.btn {:id "preview"} "preview"]
+     [:input#name {:type "text"}]
+     [:button.btn {:id "submit"} "submit"]
      [:textarea#editor {:cols 120 :rows 240 :data-editor ""}]
-     (my-include-js "bootstrap.min.js" "ace/ace.js" "editor.js")]))
+     (my-include-js "bootstrap.min.js" "ace/ace.js" "chance.min.js" "editor.js")]))
 
