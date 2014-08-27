@@ -91,11 +91,17 @@ vlla = {
 function paint(x, y) {
     if(x >= 0 && x < vlla.width && y >= 0 && y < vlla.height) {
         vlla.pixels[y*vlla.width+x] = color;
+    } else {
+        console.log("target position off of vlla");
     }
 }
 
-function color(r, g, b) {
-    color = [r, g, b];
+function palette(r, g, b) {
+    if(r >= 0 && g >= 0 && b >= 0 && r < 255 && g < 255 & b < 255) {
+        color = [r, g, b];
+    } else {
+        console.log("color out of range");
+    }
 }
 
 function refresh() {
