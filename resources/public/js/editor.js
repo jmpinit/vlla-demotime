@@ -57,12 +57,12 @@ function init() {
     });
 
     $('#submit').on('click', function() {
-        if(run) {
+        if(run && code == editor.getSession().getValue()) {
             $.post('/demo', { name: $('#name').val(), code: code }, function(data) {
                 alert("Submitted demo! Server says: " + data);
             });
         } else {
-            alert("Please preview or fix your code first. Idk which lol derp.");
+            alert("Please preview your code first.");
         }
     });
 }
