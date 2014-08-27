@@ -1,11 +1,24 @@
+width = 60;
+height = 32;
+color = [255, 255, 255];
+vlla = {
+    scale: 10,
+    width: 60,
+    height: 32,
+    pixels: [],
+    reset: function() {
+        for(var i=0; i < vlla.width * vlla.height; i++) {
+            vlla.pixels[i] = [0, 0, 0];
+        }
+
+        refresh();
+    }
+}
+
 function init() {
     $('#name').val(chance.first());
 
-    for(var i=0; i < vlla.width * vlla.height; i++) {
-        vlla.pixels[i] = [0, 0, 0];
-    }
-
-    refresh();
+    vlla.reset();
 
     var textarea = $('#editor');
 
@@ -32,6 +45,7 @@ function init() {
     });
 
     $('#preview').on('click', function() {
+        vlla.reset();
         run = false;
 
         code = editor.getSession().getValue();
@@ -78,16 +92,6 @@ setInterval(function() {
     }
 }, 100);
 
-width = 60;
-height = 32;
-color = [255, 255, 255];
-vlla = {
-    scale: 10,
-    width: 60,
-    height: 32,
-    pixels: []
-}
-
 function paint(x, y) {
     if(x >= 0 && x < vlla.width && y >= 0 && y < vlla.height) {
         vlla.pixels[y*vlla.width+x] = color;
@@ -97,7 +101,7 @@ function paint(x, y) {
 }
 
 function palette(r, g, b) {
-    if(r >= 0 && g >= 0 && b >= 0 && r < 255 && g < 255 & b < 255) {
+    if(r >= 0 && g >= 0 && b >= 0 && r <= 255 && g <= 255 & b <= 255) {
         color = [r, g, b];
     } else {
         console.log("color out of range");
