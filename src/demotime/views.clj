@@ -15,7 +15,10 @@
   (html5
     [:head
      [:title "demotime"]
-     (my-include-css "bootstrap.min.css" "bootstrap-theme.min.css")
+     (my-include-css "editor.css" "bootstrap.min.css" "bootstrap-theme.min.css")
      (my-include-js "jquery-2.1.1.min.js")]
     [:body {:onload "init()"}
-     (my-include-js "bootstrap.min.js")]))
+     [:canvas {:id "viewport" :width 600 :height 320}]
+     [:textarea#editor {:cols 120 :rows 240 :data-editor ""}]
+     (my-include-js "bootstrap.min.js" "ace/ace.js" "editor.js")]))
+
