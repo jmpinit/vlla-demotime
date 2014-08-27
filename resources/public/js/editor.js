@@ -1,4 +1,6 @@
 function init() {
+    $('#name').val(chance.first());
+
     for(var i=0; i < vlla.width * vlla.height; i++) {
         vlla.pixels[i] = [0, 0, 0];
     }
