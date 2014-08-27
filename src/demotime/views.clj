@@ -22,6 +22,14 @@
      [:button.btn {:id "preview"} "preview"]
      [:input#name {:type "text"}]
      [:button.btn {:id "submit"} "submit"]
-     [:textarea#editor {:cols 120 :rows 240 :data-editor ""}]
+     [:textarea#editor {:cols 120 :rows 240 :data-editor ""} "for(var y=0; y < 32; y++) {
+  for(var x=0; x < 60; x++) {
+    var c = x ^ y * 4 & 0xFF;
+    palette(c, c, c);
+    paint(x, y);
+  }
+}
+
+refresh();"]
      (my-include-js "bootstrap.min.js" "ace/ace.js" "chance.min.js" "editor.js")]))
 
