@@ -63,7 +63,7 @@ function init() {
         }
 
         if(!bugged) {
-            t = 0;
+            time = 0;
             run = true;
         } else {
             run = false;
@@ -84,13 +84,19 @@ function init() {
 code = "";
 run = false;
 
-t = 0;
+time = 0;
 setInterval(function() {
     if(run) {
         eval(code);
-        t += 1;
+        time += 1;
     }
 }, 100);
+
+/** OFFICIAL API **/
+
+function t() {
+    return time;
+}
 
 function paint(x, y) {
     if(x >= 0 && x < vlla.width && y >= 0 && y < vlla.height) {
