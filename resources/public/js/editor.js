@@ -5,7 +5,7 @@ function init() {
         vlla.pixels[i] = [0, 0, 0];
     }
 
-    update();
+    refresh();
 
     var textarea = $('#editor');
 
@@ -98,7 +98,7 @@ function color(r, g, b) {
     color = [r, g, b];
 }
 
-function update() {
+function refresh() {
     var canvas = $('#viewport')[0];
     var ctx = canvas.getContext('2d');
 
