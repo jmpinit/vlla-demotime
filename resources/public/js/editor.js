@@ -5,34 +5,66 @@ function init() {
 
     update();
 
-    $('#editor').data('editor', 'javascript');
+    var textarea = $('#editor');
 
-    $('textarea[data-editor]').each(function () {
-        var textarea = $(this);
+    var mode = 'javascript';
 
-        var mode = textarea.data('editor');
+    var editDiv = $('<div>', {
+        position: 'absolute',
+        width: textarea.width(),
+        height: textarea.height(),
+        'class': textarea.attr('class')
+    }).insertBefore(textarea);
 
-        var editDiv = $('<div>', {
-            position: 'absolute',
-            width: textarea.width(),
-            height: textarea.height(),
-            'class': textarea.attr('class')
-        }).insertBefore(textarea);
+    textarea.css('visibility', 'hidden');
 
-        textarea.css('visibility', 'hidden');
+    var editor = ace.edit(editDiv[0]);
+    editor.renderer.setShowGutter(false);
+    editor.getSession().setValue(textarea.val());
+    editor.getSession().setMode("ace/mode/" + mode);
+    editor.setTheme("ace/theme/idle_fingers");
 
-        var editor = ace.edit(editDiv[0]);
-        editor.renderer.setShowGutter(false);
-        editor.getSession().setValue(textarea.val());
-        editor.getSession().setMode("ace/mode/" + mode);
-        // editor.setTheme("ace/theme/idle_fingers");
+    // copy back to textarea on form submit...
+    textarea.closest('form').submit(function () {
+        textarea.val(editor.getSession().getValue());
+    });
 
-        // copy back to textarea on form submit...
-        textarea.closest('form').submit(function () {
-            textarea.val(editor.getSession().getValue());
-        })
+    $('#preview').on('click', function() {
+        run = false;
+
+        code = editor.getSession().getValue();
+
+        var bugged = false;
+
+        try {
+            eval(code);
+        } catch(e) {
+            if(e instanceof SyntaxError) {
+                alert(e.message);
+            }
+
+            bugged = true;
+        }
+
+        if(!bugged) {
+            t = 0;
+            run = true;
+        } else {
+            run = false;
+        }
     });
 }
+
+code = "";
+run = false;
+
+t = 0;
+setInterval(function() {
+    if(run) {
+        eval(code);
+        t += 1;
+    }
+}, 100);
 
 width = 60;
 height = 32;

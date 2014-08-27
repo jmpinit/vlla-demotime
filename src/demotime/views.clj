@@ -18,7 +18,8 @@
      (my-include-css "editor.css" "bootstrap.min.css" "bootstrap-theme.min.css")
      (my-include-js "jquery-2.1.1.min.js")]
     [:body {:onload "init()"}
-     [:canvas {:id "viewport" :width 600 :height 320}]
+     [:canvas {:id "viewport" :width 600 :height 320}] [:br]
+     [:button.btn {:id "preview"} "preview"]
      [:textarea#editor {:cols 120 :rows 240 :data-editor ""}]
      (my-include-js "bootstrap.min.js" "ace/ace.js" "editor.js")]))
 
