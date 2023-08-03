@@ -1,6 +1,10 @@
-# demotime
+# vlla-demotime
 
-FIXME
+Eventually this was going to be a web app that would let users compose effects
+for the Very Large LED Array (VLLA) in JavaScript to be run with
+[vlla-js](https://github.com/jmpinit/vlla-js).
+
+See [libvlla](https://github.com/jmpinit/libvlla) for context.
 
 ## Prerequisites
 
